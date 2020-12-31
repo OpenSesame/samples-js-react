@@ -9,11 +9,10 @@
  *
  * See the License for the specific language governing permissions and limitations under the License.
  */
-import React, { useEffect, useRef } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
-
+import React, { useEffect, useRef } from 'react';
 import config from './config';
 
 const Login = () => {
@@ -35,7 +34,11 @@ const Login = () => {
       baseUrl: issuer.split('/oauth2')[0],
       clientId,
       redirectUri,
-      logo: '/react.svg',
+      logo:
+        'https://www.opensesame.com/sites/all/themes/opensesame/images/logo.svg',
+      colors: {
+        brand: '#f28132',
+      },
       i18n: {
         en: {
           'primaryauth.title': 'Sign in to React & Company',
@@ -45,18 +48,28 @@ const Login = () => {
         // To avoid redirect do not set "pkce" or "display" here. OKTA-335945
         issuer,
         scopes,
+        responseType: ['id_token', 'token'],
       },
+      idps: [
+        {
+          type: 'GOOGLE',
+          id: '0oavt35l5i27GsgCf0h7',
+        },
+      ],
     });
 
-    widget.showSignInToGetTokens({
-      el: widgetRef.current,
-      scopes,
-    }).then((tokens) => {
-      // Add tokens to storage
-      oktaAuth.handleLoginRedirect(tokens);
-    }).catch((err) => {
-      throw err;
-    });
+    widget
+      .showSignInToGetTokens({
+        el: widgetRef.current,
+        scopes,
+      })
+      .then((tokens) => {
+        // Add tokens to storage
+        oktaAuth.handleLoginRedirect(tokens);
+      })
+      .catch((err) => {
+        throw err;
+      });
 
     return () => widget.remove();
   }, [oktaAuth]);
