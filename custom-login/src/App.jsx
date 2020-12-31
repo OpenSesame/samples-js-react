@@ -21,6 +21,7 @@ import CustomLoginComponent from './Login';
 import Messages from './Messages';
 import Navbar from './Navbar';
 import Profile from './Profile';
+import RegistrationForm from './RegistrationForm';
 
 const oktaAuth = new OktaAuth(config.oidc);
 
@@ -33,16 +34,14 @@ const App = () => {
   };
 
   return (
-    <Security
-      oktaAuth={oktaAuth}
-      onAuthRequired={customAuthHandler}
-    >
+    <Security oktaAuth={oktaAuth} onAuthRequired={customAuthHandler}>
       <Navbar />
       <Container text style={{ marginTop: '7em' }}>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/login/callback" component={LoginCallback} />
           <Route path="/login" component={CustomLoginComponent} />
+          <Route path="/register" component={RegistrationForm} />
           <SecureRoute path="/messages" component={Messages} />
           <SecureRoute path="/profile" component={Profile} />
         </Switch>

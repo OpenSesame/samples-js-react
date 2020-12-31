@@ -20,6 +20,7 @@ const Navbar = () => {
   const { authState, oktaAuth } = useOktaAuth();
 
   const login = async () => history.push('/login');
+  const register = async () => history.push('/register');
   const logout = async () => oktaAuth.signOut();
 
   return (
@@ -32,18 +33,27 @@ const Navbar = () => {
             <Link to="/">Okta-React Sample Project</Link>
           </Menu.Item>
           {authState.isAuthenticated && (
-          <Menu.Item id="messages-button">
-            <Icon name="mail outline" />
-            <Link to="/messages">Messages</Link>
-          </Menu.Item>
+            <Menu.Item id="messages-button">
+              <Icon name="mail outline" />
+              <Link to="/messages">Messages</Link>
+            </Menu.Item>
           )}
           {authState.isAuthenticated && (
             <Menu.Item id="profile-button">
               <Link to="/profile">Profile</Link>
             </Menu.Item>
           )}
-          {authState.isAuthenticated && <Menu.Item id="logout-button" onClick={logout}>Logout</Menu.Item>}
-          {!authState.isPending && !authState.isAuthenticated && <Menu.Item onClick={login}>Login</Menu.Item>}
+          {authState.isAuthenticated && (
+            <Menu.Item id="logout-button" onClick={logout}>
+              Logout
+            </Menu.Item>
+          )}
+          {!authState.isPending && !authState.isAuthenticated && (
+            <Menu.Item onClick={login}>Login</Menu.Item>
+          )}
+          {!authState.isPending && !authState.isAuthenticated && (
+            <Menu.Item onClick={register}>Register</Menu.Item>
+          )}
         </Container>
       </Menu>
     </div>
