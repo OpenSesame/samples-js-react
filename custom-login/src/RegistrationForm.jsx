@@ -74,44 +74,48 @@ export default function RegistrationForm() {
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-element">
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label>Email:</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
+        <label htmlFor="email">
+          Email:
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </label>
       </div>
       <div className="form-element">
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label id="firstName">First Name:</label>
-        <input
-          type="text"
-          aria-labelledby="firstName"
-          value={firstName}
-          onChange={handleFirstNameChange}
-        />
+        <label htmlFor="firstName">
+          First Name:
+          <input
+            type="text"
+            id="firstName"
+            value={firstName}
+            onChange={handleFirstNameChange}
+          />
+        </label>
       </div>
       <div className="form-element">
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label>Last Name:</label>
-        <input
-          type="text"
-          id="lastName"
-          value={lastName}
-          onChange={handleLastNameChange}
-        />
+        <label htmlFor="lastName">
+          Last Name:
+          <input
+            type="text"
+            id="lastName"
+            value={lastName}
+            onChange={handleLastNameChange}
+          />
+        </label>
       </div>
       <div className="form-element">
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label>Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
+        <label htmlFor="password">
+          Password:
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </label>
       </div>
       <input type="submit" id="submit" value="Register" />
     </form>
