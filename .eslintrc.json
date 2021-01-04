@@ -1,11 +1,10 @@
 {
-  "extends": "airbnb",
   "root": true,
   "env": {
     "browser": true,
     "jest": true
   },
-  "parserOptions": { 
+  "parserOptions": {
     "ecmaVersion": 2018
   },
   "rules": {

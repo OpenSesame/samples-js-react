@@ -43,11 +43,14 @@ export default function RegistrationForm() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
+        user: {
+          firstName,
+          lastName,
+          email,
+        },
         password,
         sessionToken,
+        group: 'catalog',
       }),
     })
       .then(() => {
