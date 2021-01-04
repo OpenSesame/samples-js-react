@@ -1,3 +1,20 @@
+#Okta POC Setup
+
+- Add a .env file to the repo root
+    ```
+    ORG_URL=https://opensesamedev-admin.oktapreview.com
+    TOKEN=<PULL FROM LASTPASS SECRET: "Okta Registration API POC - CORE 179">
+    ```
+    If you need access to last pass secret, please let @Patrick Hendricks know and he will give you access. Everyone listed as a stakeholder should have gotten an invite for this secret.
+- Navigate to the api directory
+- `Run npm install`
+- `Run npm start`
+- If you need to manually test, use Postman to make a POST to http://localhost:3001/api/users with any body. If it returns an Express.js error, it is up and running!
+
+See for more details: https://opensesame.atlassian.net/wiki/spaces/CORE/pages/1216118791
+
+#BELOW IS ORIGINAL FORKED REPO README
+
 # React Sample Applications for Okta
 
 This repository contains several sample applications that demonstrate various Okta use-cases in your React application.
